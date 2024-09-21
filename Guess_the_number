@@ -1,0 +1,33 @@
+class A
+  {
+    A (int a)
+    {
+      int f = 0,n;
+      System.out.println("Enter your guess");
+      Scanner S = new Scanner(System.in);
+      n = S.nextInt();
+      while (f==0)
+        {
+          if(n>a)
+          {
+            System.out.println("Your Guess is higher than number. Try again");
+            n=S.nextInt();
+          }
+          else if(n<a)
+          {
+            System.out.println("Your guess is lower than the number.Try again");
+            n=S.nextInt();
+          }
+          else
+          {
+            System.out.println("Your guess is correct. Congratulations!!!");
+            f=1;
+          }
+        }
+    }
+  }
+class Constructor 
+  {
+    public static void main(String arg[])
+    {
+      System.out.println("This is Number guessing Game
