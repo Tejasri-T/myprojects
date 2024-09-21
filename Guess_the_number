@@ -1,22 +1,25 @@
+import java.util.*;
 class A
   {
-    A (int a)
+    void guess (int a,int b)
     {
-      int f = 0,n;
-      System.out.println("Enter your guess");
+      int f = 0,n,c=1;
+      System.out.println("Enter your guess (and if you ever wanna quit enter '0')");
       Scanner S = new Scanner(System.in);
       n = S.nextInt();
-      while (f==0)
+      while ((f!=1)&&(c<b||b==0)&&n!=0)
         {
           if(n>a)
           {
             System.out.println("Your Guess is higher than number. Try again");
             n=S.nextInt();
+            c++;
           }
           else if(n<a)
           {
             System.out.println("Your guess is lower than the number.Try again");
             n=S.nextInt();
+            c++;
           }
           else
           {
@@ -24,10 +27,63 @@ class A
             f=1;
           }
         }
+      if(c>=b )
+      {
+        System.out.println("You used up all your guesses.Better luck next time\nThe number is :"+a);
+      }
+      else if(n==0)
+      {
+        System.out.println("The number is :"+a);
+      }
     }
   }
-class Constructor 
+class Game
   {
     public static void main(String arg[])
     {
-      System.out.println("This is Number guessing Game
+      Scanner S = new Scanner(System.in);
+      try{
+      System.out.println("Hi, Welcome to Number Guessing Game.");
+      Thread.sleep(1500);
+      System.out.println("Wondering how to play? It's just guessing a number I choose (between 1 & 100).");
+      Thread.sleep(2000);
+      System.out.println("Choose the level");
+      Thread.sleep(1000);
+      System.out.println("1-SuperEasy (Unlimited Guesses)");
+      Thread.sleep(1000);
+      System.out.println("2-Easy (10 Guesses)");
+      Thread.sleep(1000);
+      System.out.println("3-Medium (7 Guesses)");
+      Thread.sleep(1000);
+      System.out.println("4-Hard (5 guesses)");
+      Thread.sleep(1000);
+      System.out.println("5-Super Hard(3 guesses)");
+      Thread.sleep(1000);
+      }catch (InterruptedException i)
+        {
+         i.printStackTrace();
+        }
+      int O = S.nextInt();
+      Random R = new Random();
+      int x = R.nextInt(100)+1;
+      A obj = new A();
+      switch(O)
+        {
+          case 1: obj.guess(x,0);
+                  break;
+          case 2: obj.guess(x,10);
+                  break;
+          case 3: obj.guess(x,7);
+                  break;
+          case 4: obj.guess(x,5);
+                  break;
+          case 5: obj.guess(x,3);
+                  break;
+          default: System.out.println("Invalid choice");
+      }
+    }
+  }
+          
+          
+        
+      
